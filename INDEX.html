@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GL TASK-QUOTATION</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <div class="sidebar no-print">
+            <div class="sidebar-header">
+                <h2> QUOTATION</h2>
+            </div>
+            
+            <div class="inputs-scroll">
+                <div class="group">
+                    <h3>Header Info</h3>
+                    <label>Quote No:</label> <input type="text" id="in-quote" value="CFMA25-26/SP0085" oninput="updateUI()">
+                    <label>Date:</label> <input type="text" id="in-date" value="01/08/2025" oninput="updateUI()">
+                </div>
+                <div class="group">
+                    <h3>Client Info</h3>
+                    <label>Attn Name:</label> <input type="text" id="in-attn" value="Mr. Mubarak G. Shaikh" oninput="updateUI()">
+                    <label>Company:</label> <input type="text" id="in-comp" value="New melting centre pvt.ltd" oninput="updateUI()">
+                    <label>Location:</label> <input type="text" id="in-loc" value="Kolhapur" oninput="updateUI()">
+                    <label>Subject:</label> <input type="text" id="in-sub" value="QUOTE FOR SBM SPARES" oninput="updateUI()">
+                </div>
+                <div class="group">
+                    <h3>Add Item</h3>
+                    <div class="row-inputs">
+    <input type="text" id="in-desc" placeholder="Description" style="flex:2" required>
+    <input type="number" id="in-qty" placeholder="Qty" style="flex:1" min="1" required>
+    <input type="number" id="in-price" placeholder="Price" style="flex:1" min="0" step="0.01" required>
+</div>
+                    <button class="btn-add" onclick="addItem()">+ Add Item</button>
+                </div>
+            </div>
+            <button class="btn-print" onclick="window.print()">Print Quote</button>
+        </div>
+
+        <div class="preview-area">
+
+            <div class="a4-sheet" id="page1">
+                <img src="assets/logo-left.png" class="watermark">
+
+                <div class="header-wrap">
+                    <div class="header">
+                        <div class="logo-l"><img src="assets/logo-left.png"></div>
+                        <div class="header-txt">
+                            <div class="c-title">CLASSIC FOUNDRY MACHINERIES AND AUTOMATION</div>
+                            <div class="c-addr">2/307 J, AUTO NAGAR, KUTTAIYUR, KARAMADAI, COIMBATORE-641104.</div>
+                            <div class="c-gst">GSTIN: <span class="hl">33AAUFC2552M1Z3</span></div>
+                            <div class="c-con">E-Mail: info@classicfoundrymachineries.in | Ph: +91 81100 63887</div>
+                        </div>
+                        <div class="logo-r"><img src="assets/logo-right.png"></div>
+                    </div>
+                    <div class="blue-line"></div>
+                    <div class="info-row">
+                        <span>QUOTENO: <b id="out-quote-1"></b></span>
+                        <span>DATE: <b id="out-date-1"></b></span>
+                    </div>
+                </div>
+
+                <div class="sheet-body">
+                    <div class="address-box">
+                        <p>Kind Attn.; <b id="out-attn-1"></b>,</p>
+                        <p style="margin-left:80px;" id="out-comp-1"></p>
+                        <p style="margin-left:80px;" id="out-loc-1"></p>
+                    </div>
+
+                    <p class="salutation">Dear Sir,</p>
+
+                    <div class="subject-line">SUBJECT: <span id="out-sub-1"></span></div>
+
+                    <div class="letter-content">
+                        <p>
+                            We wish to take this opportunity to thanks for allowing us to submit our <b><span id="out-sub-2"></span></b>. 
+                            We hope that our proposal will be in line with your requirement correctly and we look forward to 
+                            receive your positive feedback. Also, we look forward to the opportunity to service your needs and become a 
+                            valued supplier in maintaining and improving our growth.
+                        </p>
+                        <p>
+                            Once again thank you very much for your interest on us and assuring our best support always.
+                        </p>
+                    </div>
+
+                    <div class="spacer"></div>
+
+                    <div class="sign-box">
+                        <p>Thanks and regards,</p>
+                        <b>CLASSIC FOUNDRY MACHINERIES AND AUTOMATION</b>
+                        <div style="height:60px;"></div>
+                        <b>AUTHORISED SIGNATORY</b>
+                    </div>
+                </div>
+
+                <div class="footer">
+                    <div class="footer-line"></div>
+                    <div class="f-orange">MANUFACTURES & SUPPLIERS OF ALL FOUNDRY EQUIPMENTS AND SPARES</div>
+                    <div class="f-black">WEBSITE: www.classicfoundrymachineries.in</div>
+                    <div class="page-num">Page 1</div>
+                </div>
+            </div>
+
+            <div class="a4-sheet" id="page2">
+                <img src="assets/logo-left.png" class="watermark">
+
+                <div class="header-wrap">
+                    <div class="header">
+                        <div class="logo-l"><img src="assets/logo-left.png"></div>
+                        <div class="header-txt">
+                            <div class="c-title">CLASSIC FOUNDRY MACHINERIES AND AUTOMATION</div>
+                            <div class="c-addr">2/307 J, AUTO NAGAR, KUTTAIYUR, KARAMADAI, COIMBATORE-641104.</div>
+                            <div class="c-gst">GSTIN: <span class="hl">33AAUFC2552M1Z3</span></div>
+                            <div class="c-con">E-Mail: info@classicfoundrymachineries.in | Ph: +91 81100 63887</div>
+                        </div>
+                        <div class="logo-r"><img src="assets/logo-right.png"></div>
+                    </div>
+                    <div class="blue-line"></div>
+                    <div class="info-row">
+                        <span>QUOTENO: <b id="out-quote-2"></b></span>
+                        <span>DATE: <b id="out-date-2"></b></span>
+                    </div>
+                </div>
+
+                <div class="sheet-body">
+                    <div class="subject-line" style="margin-top:0; margin-bottom:20px;">
+                        <span id="out-sub-3"></span>
+                    </div>
+
+                    <table class="q-table">
+                        <thead>
+                            <tr>
+                                <th width="50">S.NO</th>
+                                <th>DESCRIPTION</th>
+                                <th width="80">QTY</th>
+                                <th width="100">UNIT PRICE (Rs.)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-body"></tbody>
+                    </table>
+
+                    <div class="terms-box">
+                        <div class="terms-head">TERMS AND CONDITIONS</div>
+                        <table class="terms-table">
+                            <tr><td width="150">Delivery</td><td>: 6-7 Working days</td></tr>
+                            <tr><td>Payment</td><td>: 100% against Performa invoice</td></tr>
+                            <tr><td>Packing & Forwarding</td><td>: P&F charges extra as actual 3%</td></tr>
+                            <tr><td>Tax</td><td>: GST will be applicable as 18%</td></tr>
+                            <tr><td>Transport</td><td>: By Customer</td></tr>
+                            <tr><td>Quote Validity</td><td>: 25days</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="spacer"></div>
+
+                    <div class="sign-box">
+                        <b>AUTHORISED SIGNATORY</b>
+                    </div>
+                </div>
+
+                <div class="footer">
+                    <div class="footer-line"></div>
+                    <div class="f-orange">MANUFACTURES & SUPPLIERS OF ALL FOUNDRY EQUIPMENTS AND SPARES</div>
+                    <div class="f-black">WEBSITE: www.classicfoundrymachineries.in</div>
+                    <div class="page-num">Page 2</div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
